@@ -15,4 +15,47 @@ body {
 	height: 12.5rem;
 	border-radius: 50%;
 	background: url('https://placekitten.com/200/200') no-repeat center/cover;
+	position: relative;
+}
+
+.avatar::before,
+.avatar::after {
+	--scale: 0;
+	--arrow-size: 0.625rem;
+
+	position: absolute;
+	top: -0.5rem;
+	left: 50%;
+	transform: translateX(-50%) translateY(var(--translate-y, 0))
+		scale(var(--scale));
+	transition: transform 0.5s;
+	transform-origin: bottom center;
+}
+
+.avatar::before {
+	--translate-y: calc(-100% - var(--arrow-size));
+
+	content: attr(data-tooltip);
+	font-size: 1.5rem;
+	color: white;
+	padding: 0.5rem;
+	border-radius: 0.3rem;
+	text-align: center;
+	width: max-content;
+	max-width: 100%;
+	background-color: hsla(0, 0%, 20%, 0.8);
+}
+
+.avatar:hover::before,
+.avatar:hover::after {
+	--scale: 1;
+}
+
+.avatar::after {
+	--translate-y: calc(-1 * var(--arrow-size));
+
+	content: '';
+	border: var(--arrow-size) solid transparent;
+	border-top-color: hsla(0, 0%, 20%, 0.8);
+	transform-origin: top center;
 }
