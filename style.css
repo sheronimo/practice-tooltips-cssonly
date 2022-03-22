@@ -9,3 +9,10 @@ body {
 	place-items: center;
 	min-height: 100vh;
 }
+
+.avatar {
+	width: 12.5rem;
+	height: 12.5rem;
+	border-radius: 50%;
+	background: url('https://placekitten.com/200/200') no-repeat center/cover;
+}
